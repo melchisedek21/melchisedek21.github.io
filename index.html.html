@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page de Melchisedek21</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff3c6e;
+      --secondary: #00c9ff;
+      --accent: #ffe600;
+      --dark: #111;
+      --light: #f9f9f9;
+      --card-bg: #1a1a2e;
+    }
+
+```
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--light);
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== HERO HEADER ===== */
+header {
+  position: relative;
+  text-align: center;
+  padding: 80px 20px 60px;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  top: -150px;
+  left: -100px;
+  opacity: 0.25;
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+  bottom: -100px;
+  right: -80px;
+  opacity: 0.2;
+  border-radius: 50%;
+  animation: pulse 5s ease-in-out infinite reverse;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.8s ease;
+}
+
+header p {
+  max-width: 600px;
+  margin: 20px auto 0;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(17, 17, 17, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--primary);
+  padding: 14px 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--light);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav ul li a:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 60, 110, 0.4);
+}
+
+nav ul li a.snap {
+  background: linear-gradient(135deg, #fffc00, #ffffff);
+  color: #111;
+}
+
+nav ul li a.insta {
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+}
+
+nav ul li a.snap:hover,
+nav ul li a.insta:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* ===== SECTIONS ===== */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-align: center;
+  margin: 60px 0 30px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ===== PHOTO GRID ===== */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 1 / 1;
+  background: var(--card-bg);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 10px 40px rgba(255, 60, 110, 0.4);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.08);
+}
+
+.photo-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-card:hover .overlay {
+  opacity: 1;
+}
+
+/* ===== VIDEO GRID ===== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.video-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border: 1px solid rgba(0, 201, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 201, 255, 0.3);
+}
+
+.video-card video {
+  width: 100%;
+  display: block;
+  border-radius: 14px 14px 0 0;
+}
+
+.video-label {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  border-top: 2px solid var(--primary);
+}
+
+footer span {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+
+  nav ul li a {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <h1>Melchisedek21</h1>
+    <p>Petite auto-biographie de ma personne avec un petit site créé pour m'amuser pendant mon temps libre. Alors moi c'est Melchisedek AKA j'aime ce que je fais dans la vie comme choix d'étude, j'aime énormément mes parents et mon travail aussi.</p>
+  </header>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <ul>
+      <li><a href="#photos">📸 Photos</a></li>
+      <li><a href="#videos">🎬 Vidéos</a></li>
+      <li><a href="https://snapchat.com/t/nSRhVBdP" target="_blank" class="snap">👻 Snapchat</a></li>
+      <li><a href="https://www.instagram.com/melchi.emm21?igsh=M4dpbGRamDBuM3pudQ%3D%3D&utm_source=qr" target="_blank" class="insta">📷 Instagram</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+```
+<!-- PHOTOS -->
+<h2 class="section-title" id="photos">Mes Photos</h2>
+<div class="photo-grid">
+  <div class="photo-card">
+    <img src="images/photo1.jpeg" alt="Photo 1">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo2.jpeg" alt="Photo 2">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo3.jpeg" alt="Photo 3">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo4.jpeg" alt="Photo 4">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo5.jpeg" alt="Photo 5">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo6.jpeg" alt="Photo 6">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo7.jpeg" alt="Photo 7">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo8.jpeg" alt="Photo 8">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo9.jpeg" alt="Photo 9">
+    <div class="overlay"></div>
+  </div>
+  <div class="photo-card">
+    <img src="images/photo10.jpeg" alt="Photo 10">
+    <div class="overlay"></div>
+  </div>
+</div>
+
+<!-- VIDÉOS -->
+<h2 class="section-title" id="videos">Mes Vidéos</h2>
+<div class="video-grid">
+  <div class="video-card">
+    <video controls>
+      <source src="videos/video1.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">Vidéo 1</div>
+  </div>
+  <div class="video-card">
+    <video controls>
+      <source src="videos/video2.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">Vidéo 2</div>
+  </div>
+  <div class="video-card">
+    <video controls>
+      <source src="videos/video3.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">Vidéo 3</div>
+  </div>
+  <div class="video-card">
+    <video controls>
+      <source src="videos/video4.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">Vidéo 4</div>
+  </div>
+  <div class="video-card">
+    <video controls>
+      <source src="videos/video5.mp4" type="video/mp4">
+    </video>
+    <div class="video-label">Vidéo 5</div>
+  </div>
+</div>
+```
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>© 2026 — Fait avec ❤️ par <span>Melchisedek21</span></p>
+  </footer>
+
+</body>
+</html>
